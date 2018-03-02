@@ -1,0 +1,53 @@
+.green{
+    color: green;
+}
+
+.white{
+    color: white;
+}
+
+.blue{
+    color: blue;
+}
+
+.red{
+    color: red;
+}
+
+.gray{
+    color: gray;
+}
+
+.background-blue{
+    background-color: steelblue;
+}
+
+.background-gray{
+    background-color: lightgray;
+}
+
+.center{
+    text-align: center;
+}
+
+.fixed-bottom{
+    position: fixed;
+    bottom: 0;
+}
+
+.line{
+    height: 2px;
+    background-color: darkgray;
+}
+
+.no-padding{
+    padding: 0;
+}
+
+.no-margin{
+    margin: 0;
+}
+
+.hover-active:hover{
+    background-color: #eeeeee;
+}

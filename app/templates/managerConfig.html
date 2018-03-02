@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row">
+        <br>
+        备注：<input type="text" ng-model="manager.remark">
+    </div>
+    <div class="row">
+        <br>
+        <div class="panel panel-info">
+            <div class="panel-heading">{{manager.username}}({{manager.nickname}})管理的小区</div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <input type="checkbox" ng-model="checkboxes.checkedAll">&nbsp;&nbsp;&nbsp;&nbsp;全选
+                </li>
+                <li ng-repeat="area in areas" class="list-group-item">
+                    <input type="checkbox" ng-model="checkboxes.items[area.id]">&nbsp;&nbsp;&nbsp;&nbsp;{{area.name}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" ng-click="doConfig()">提交</button>
+</div>

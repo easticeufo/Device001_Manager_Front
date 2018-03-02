@@ -1,0 +1,68 @@
+<div class="container-fluid">
+    <!-- 用户退款对话框 -->
+    <script type="text/ng-template" id="customRefundModal.html">
+        <div class="modal-header bg-danger">
+            <h4>退款</h4>
+        </div>
+        <div class="modal-body">
+            <span>退款金额(元):</span><input type="text" ng-model="refundAmount"><br>
+            <span>退款原因:</span><input type="text" ng-model="refundReason"><br>
+            <span>退款密码:</span><input type="password" ng-model="refundPassword"><br>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" ng-click="doRefund()">确定</button>
+            <button type="button" class="btn btn-default" ng-click="cancel()">取消</button>
+        </div>
+    </script>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <span>昵称:</span>
+            <input type="text" placeholder="请输入客户昵称" ng-model="nickname">
+        </div>
+        <div class="col-xs-6">
+            <button type="button" class="btn btn-info btn-sm" ng-click="search()" style="width:100%">查询</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-striped table-bordered center">
+                <caption>
+                    <h3 align="center">客户列表</h3>
+                    <div class="col-xs-4">
+                        <span class="red">客户数量:{{totalItems}}</span>
+                    </div>
+                    <div class="col-xs-4">
+                        <span class="red">客户余额:{{totalBalance/100 | number:2}}元</span>
+                    </div>
+                </caption>
+                <tr class="info">
+                    <th class="center">客户ID</th>
+                    <th class="center">客户类型</th>
+                    <th class="center">客户昵称</th>
+                    <th class="center">余额(元)</th>
+                    <th class="center">操作</th>
+                </tr>
+                <tr ng-repeat="custom in customs">
+                    <td>{{custom.id}}</td>
+                    <td>{{custom.type | customType}}</td>
+                    <td>{{custom.nickname}}</td>
+                    <td>{{custom.balance / 100 | number: 2}}</td>
+                    <td>
+                        <a ui-sref="main.customDetail({customId:custom.id})" class="btn btn-info btn-xs">
+                            详情
+                        </a>
+                        <button type="button" ng-click="refund(custom.id)" class="btn btn-info btn-xs">退款</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <ul uib-pagination ng-change="pageChanged()" total-items="totalItems" ng-model="currentPage"  items-per-page="size" max-size="15" boundary-link-numbers="true" class="pagination-sm" previous-text="上一页" next-text="下一页"></ul>
+        </div>
+    </div>
+
+</div>

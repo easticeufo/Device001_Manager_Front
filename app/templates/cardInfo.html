@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6" align="right">
+            卡号:
+        </div>
+        <div class="col-xs-6" align="left">
+            <span>{{card.id}}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" align="right">
+            余额:
+        </div>
+        <div class="col-xs-6" align="left">
+            <span>{{(card.balance / 100) | number:2}}元</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" align="right">
+            <button type="button" class="btn btn-primary" ng-click="recharge()">充值</button>
+        </div>
+        <div class="col-xs-6" align="left">
+        </div>
+    </div>
+</div>

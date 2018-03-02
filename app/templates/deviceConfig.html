@@ -1,0 +1,91 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6" align="right">
+            设备编号:
+        </div>
+        <div class="col-xs-6" align="left">
+            {{device.code}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" align="right">
+            设备类型:
+        </div>
+        <div class="col-xs-6" align="left">
+            <select ng-options="deviceTypeOption.type as deviceTypeOption.label for deviceTypeOption in deviceTypeOptions" ng-model="device.type" required>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" align="right">
+            小区:
+        </div>
+        <div class="col-xs-6" align="left">
+            <select ng-options="area.id as area.name for area in areas" ng-model="device.areaId" required>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" align="right">
+            位置:
+        </div>
+        <div class="col-xs-6" align="left">
+            <input type="text" ng-model="device.location">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" align="right">
+            校准因子:
+        </div>
+        <div class="col-xs-6" align="left">
+            <input type="text" ng-model="factor">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" align="right">
+            充电电费(元/度):
+        </div>
+        <div class="col-xs-6" align="left">
+            <input type="text" ng-model="unitPrice">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" align="right">
+            最低电费(元):
+        </div>
+        <div class="col-xs-6" align="left">
+            <input type="text" ng-model="minPrice">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" align="right">
+            附加收费(元):
+        </div>
+        <div class="col-xs-6" align="left">
+            <input type="text" ng-model="attachPrice">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" align="right">
+            透支系数:
+        </div>
+        <div class="col-xs-6" align="left">
+            <input type="text" ng-model="overdraft">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" align="right">
+            浮充时间(分钟):
+        </div>
+        <div class="col-xs-6" align="left">
+            <input type="text" ng-model="device.floatChargeTime">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" align="right">
+            <button type="button" class="btn btn-primary" ng-click="doConfig()">提交</button>
+        </div>
+        <div class="col-xs-6" align="left">
+        </div>
+    </div>
+</div>

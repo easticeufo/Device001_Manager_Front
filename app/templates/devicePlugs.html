@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-striped table-bordered center">
+                <caption><h3 align="center">设备{{deviceCode}}的插座列表</h3></caption>
+                <tr class="info">
+                    <th class="center">ID</th>
+                    <th class="center">状态</th>
+                    <th class="center">开始充电时间</th>
+                    <th class="center">充电限额(元)</th>
+                    <th class="center">充电用户</th>
+                    <th class="center">状态更新时间</th>
+                    <th class="center">功率(瓦)</th>
+                    <th class="center">消耗电量(度)</th>
+                </tr>
+                <tr ng-repeat="plug in plugs">
+                    <td>{{plug.id}}</td>
+                    <td>{{plug.status | plugStatus}}</td>
+                    <td>{{plug.startTime | date: "yyyy-MM-dd HH:mm:ss"}}</td>
+                    <td>{{(plug.limitPrice / 100) | number:2}}</td>
+                    <td>
+                        <a ng-show="plug.customId" ui-sref="main.customDetail({customId:plug.customId})" class="btn btn-info btn-xs">{{plug.nickname}}</a>
+                    </td>
+                    <td>{{plug.updateTime | date: "yyyy-MM-dd HH:mm:ss"}}</td>
+                    <td>{{plug.power}}</td>
+                    <td>{{plug.consumePower / 1000 | number:1}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>

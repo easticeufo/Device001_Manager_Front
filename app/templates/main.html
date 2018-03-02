@@ -1,0 +1,18 @@
+<div class="container-fluid main">
+    <div class="row" style="background:#234">
+        <ul class="nav nav-pills col-xs-10">
+            <li ui-sref-active="active" ng-hide="manager.level>3"><a ui-sref="main.device">设备列表</a></li>
+            <li ui-sref-active="active"><a ui-sref="main.report">统计报表</a></li>
+            <li ui-sref-active="active" ng-hide="manager.level>1"><a ui-sref="main.finance">财务报表</a></li>
+            <li ui-sref-active="active" ng-hide="manager.level>2"><a ui-sref="main.area">小区列表</a></li>
+            <li ui-sref-active="active" ng-hide="manager.level>1"><a ui-sref="main.manager">管理员列表</a></li>
+            <li ui-sref-active="active" ng-hide="manager.level>1"><a ui-sref="main.custom">客户列表</a></li>
+            <li ui-sref-active="active"><a ui-sref="main.chargeRecord">充电记录</a></li>
+            <li ui-sref-active="active"><a ui-sref="login" ng-click="doLogout()">登出</a></li>
+        </ul>
+        <div class="col-xs-2" style="color: white">Hello,{{manager.nickname}}</div>
+    </div>
+    <div class="row">
+        <div ui-view></div>
+    </div>
+</div>

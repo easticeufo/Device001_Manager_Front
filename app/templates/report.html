@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-4">
+            <span>选择年度：</span>
+            <select ng-options="yearOption.year as yearOption.label for yearOption in yearOptions" ng-model="select.year" ng-change="setMonthOptions()">
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <span>选择月份：</span>
+            <select ng-options="monthOption.month as monthOption.label for monthOption in monthOptions" ng-model="select.month">
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <button type="button" class="btn btn-primary btn-sm" ng-click="search()">查询</button>
+            <button type="button" class="btn btn-primary btn-sm" ng-click="exportExcel()">导出excel</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <span>选择小区：</span>
+            <select ng-options="areaOption.id as areaOption.name for areaOption in areaOptions" ng-model="select.areaId" ng-change="setDevicePlugOptions()">
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <span>选择设备：</span>
+            <select ng-options="deviceOption.code as deviceOption.location for deviceOption in deviceOptions" ng-model="select.deviceCode" ng-change="setPlugOptions()" ng-disabled="disableDeviceOption">
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <span>选择插座：</span>
+            <select ng-options="plugOption.id as plugOption.label for plugOption in plugOptions" ng-model="select.plugId" ng-disabled="disablePlugOption">
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-striped table-bordered center">
+                <caption><h3 align="center">{{reportCaption}}</h3></caption>
+                <tr class="info">
+                    <th class="center">时间</th>
+                    <th class="center">充电次数</th>
+                    <th class="center">充电时长</th>
+                    <th class="center">充电度数(度)</th>
+                    <th class="center">收入(元)</th>
+                </tr>
+                <tr ng-repeat="item in report">
+                    <td>{{item.startTime | reportTime:item.type}}</td>
+                    <td>{{item.chargeNumber}}</td>
+                    <td>{{item.durationTime | durationTime}}</td>
+                    <td>{{(item.powerConsumption / 1000) | number:1}}</td>
+                    <td>{{(item.income / 100) | number:2}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

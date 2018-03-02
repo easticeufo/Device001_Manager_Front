@@ -1,0 +1,103 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-4">
+            <span>选择年度：</span>
+            <select ng-options="yearOption.year as yearOption.label for yearOption in yearOptions" ng-model="select.year" ng-change="setMonthOptions()">
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <span>选择月份：</span>
+            <select ng-options="monthOption.month as monthOption.label for monthOption in monthOptions" ng-model="select.month">
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <button type="button" class="btn btn-primary btn-sm" ng-click="search()">查询</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-bordered">
+                <caption><h3 align="center">{{caption}}</h3></caption>
+                <tr>
+                    <th>项目</th>
+                    <th>金额(元)</th>
+                    <th>备注</th>
+                </tr>
+                <tr class="info">
+                    <td colspan="3">客户账目</td>
+                </tr>
+                <tr>
+                    <td>充电预付</td>
+                    <td>{{finance.customStartAmount/100 | number:2}}</td>
+                    <td>开始充电时预扣的充电限额</td>
+                </tr>
+                <tr>
+                    <td>充电退款</td>
+                    <td>{{finance.customStopAmount/100 | number:2}}</td>
+                    <td>充电结束时剩余电量的退款</td>
+                </tr>
+                <tr>
+                    <td>异常退款</td>
+                    <td>{{finance.customExceptionAmount/100 | number:2}}</td>
+                    <td>设备网络通信异常时的退款</td>
+                </tr>
+                <tr>
+                    <td>人工退款</td>
+                    <td>{{finance.customRefundAmount/100 | number:2}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>充值收入</td>
+                    <td>{{finance.customPayAmount/100 | number:2}}</td>
+                    <td>使用微信支付宝自助充值或管理员人工充值的收入</td>
+                </tr>
+                <tr>
+                    <td>充值赠送</td>
+                    <td>{{finance.customGiftAmount/100 | number:2}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>客户收支</td>
+                    <td>{{finance.customTotalAmount/100 | number:2}}</td>
+                    <td></td>
+                </tr>
+                <tr class="info">
+                    <td colspan="3">收入项目</td>
+                </tr>
+                <tr>
+                    <td>微信收入</td>
+                    <td>{{finance.wechatIncome/100 | number:2}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>支付宝收入</td>
+                    <td>{{finance.alipayIncome/100 | number:2}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>人工充值收入</td>
+                    <td>{{finance.manualIncome/100 | number:2}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>收入合计</td>
+                    <td>{{finance.customPayAmount/100 | number:2}}</td>
+                    <td></td>
+                </tr>
+                <tr class="info">
+                    <td colspan="3">支出项目</td>
+                </tr>
+                <tr ng-repeat="managerSplit in finance.managerSplits">
+                    <td>分账</td>
+                    <td>{{managerSplit.splitAmount/100 | number:2}}</td>
+                    <td>{{managerSplit.managerNickname}}({{managerSplit.managerRemark}})</td>
+                </tr>
+                <tr>
+                    <td>支出合计</td>
+                    <td>{{totalSplitAmount/100 | number:2}}</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
