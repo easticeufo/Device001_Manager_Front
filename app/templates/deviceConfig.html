@@ -41,36 +41,56 @@
             <input type="text" ng-model="factor">
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-6" align="right">
-            充电电费(元/度):
+    <div ng-hide="device.type == 'time'">
+        <div class="row">
+            <div class="col-xs-6" align="right">
+                充电电费(元/度):
+            </div>
+            <div class="col-xs-6" align="left">
+                <input type="text" ng-model="unitPrice">
+            </div>
         </div>
-        <div class="col-xs-6" align="left">
-            <input type="text" ng-model="unitPrice">
+        <div class="row">
+            <div class="col-xs-6" align="right">
+                最低电费(元):
+            </div>
+            <div class="col-xs-6" align="left">
+                <input type="text" ng-model="minPrice">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6" align="right">
+                附加收费(元):
+            </div>
+            <div class="col-xs-6" align="left">
+                <input type="text" ng-model="attachPrice">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6" align="right">
+                透支系数:
+            </div>
+            <div class="col-xs-6" align="left">
+                <input type="text" ng-model="overdraft">
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-6" align="right">
-            最低电费(元):
+    <div ng-show="device.type == 'time'">
+        <div class="row">
+            <div class="col-xs-6" align="right">
+                计时最低电费(元):
+            </div>
+            <div class="col-xs-6" align="left">
+                <input type="text" ng-model="minPrice">
+            </div>
         </div>
-        <div class="col-xs-6" align="left">
-            <input type="text" ng-model="minPrice">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6" align="right">
-            附加收费(元):
-        </div>
-        <div class="col-xs-6" align="left">
-            <input type="text" ng-model="attachPrice">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6" align="right">
-            透支系数:
-        </div>
-        <div class="col-xs-6" align="left">
-            <input type="text" ng-model="overdraft">
+        <div class="row">
+            <div class="col-xs-6" align="right">
+                计时最低时间(小时):
+            </div>
+            <div class="col-xs-6" align="left">
+                <input type="text" ng-model="minTime">
+            </div>
         </div>
     </div>
     <div class="row">

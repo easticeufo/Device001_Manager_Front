@@ -316,6 +316,7 @@ appControllers.controller("DeviceConfigController", ["$scope", "$state", "$state
                 {
                     $scope.overdraft = 1;
                 }
+                $scope.minTime = $scope.device.unitPrice * $scope.minPrice / 60;
             },
             function (response)
             {
@@ -326,10 +327,17 @@ appControllers.controller("DeviceConfigController", ["$scope", "$state", "$state
         $scope.doConfig = function ()
         {
             $scope.device.factor = $scope.factor * 1000;
-            $scope.device.unitPrice = $scope.unitPrice * 100;
             $scope.device.minPrice = $scope.minPrice * 100;
             $scope.device.attachPrice = $scope.attachPrice * 100;
             $scope.device.overdraft = $scope.overdraft * 1000;
+            if ($scope.device.type == 'time')
+            {
+                $scope.device.unitPrice = Math.round($scope.minTime * 60 / $scope.minPrice);
+            }
+            else
+            {
+                $scope.device.unitPrice = $scope.unitPrice * 100;
+            }
             $scope.device.$update(
                 function ()
                 {
