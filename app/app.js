@@ -3,7 +3,7 @@
  */
 
 //testServerAddr = "http://localhost:8082/"; // 开发测试时使用
-//testServerAddr = "http://www.yjm2m.com:8080/Device001_Manager/"; // 开发测试时使用
+//testServerAddr = "http://www.yjm2m.com:8080/Device502_Manager/"; // 开发测试时使用
 testServerAddr = ""; // 发布时使用
 
 var eastApp = angular.module("eastApp", ["ui.router", "restfulApiService", "appControllers", "appFilters", "toolService",

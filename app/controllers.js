@@ -276,16 +276,63 @@ appControllers.controller("DevicesController", ["$scope", "$state", "ApiMine", "
     }
 ]);
 
-appControllers.controller("DevicePlugsController", ["$scope", "$stateParams", "ApiMineDevice",
-    function ($scope, $stateParams, ApiMineDevice) {
+appControllers.controller("DevicePlugsController", ["$scope", "$stateParams", "ApiMineDevice", "ApiPlug",
+    function ($scope, $stateParams, ApiMineDevice, ApiPlug) {
         $scope.deviceCode = $stateParams.deviceCode;
         $scope.plugs = ApiMineDevice.getPlugs({deviceCode:$stateParams.deviceCode},
-            function (data) {},
+            function (data)
+            {
+                for (var i = 0; i < $scope.plugs.length; i++)
+                {
+                    if ($scope.plugs[i].status == 'E')
+                    {
+                        $scope.plugs[i].statusButtonName = "恢复正常";
+                    }
+                    else
+                    {
+                        $scope.plugs[i].statusButtonName = "设为故障";
+                    }
+                }
+            },
             function (response)
             {
                 alert(response.data.returnMsg);
             }
         );
+
+        $scope.setPlugStatus = function (plugId)
+        {
+            var setStatus = 'E';
+
+            for (var i = 0; i < $scope.plugs.length; i++)
+            {
+                if ($scope.plugs[i].id == plugId)
+                {
+                    if ($scope.plugs[i].status == 'E')
+                    {
+                        setStatus = 'N';
+                    }
+                    break;
+                }
+            }
+
+            ApiPlug.update(
+                {
+                    deviceCode:$stateParams.deviceCode,
+                    plugId:plugId
+                },
+                {
+                    status:setStatus
+                },
+                function (data)
+                {
+                    location.reload();
+                },
+                function (response) {
+                    alert(response.data.returnMsg);
+                }
+            );
+        };
     }
 ]);
 

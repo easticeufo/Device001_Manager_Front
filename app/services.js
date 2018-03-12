@@ -135,6 +135,12 @@ restfulApiService.factory("ApiDevice", ["$resource",
     }
 ]);
 
+restfulApiService.factory("ApiPlug", ["$resource",
+    function ($resource) {
+        return $resource(testServerAddr + "api/devices/:deviceCode/plugs/:plugId", null);
+    }
+]);
+
 restfulApiService.factory("ApiFinance", ["$resource",
     function ($resource) {
         return $resource(testServerAddr + "api/finance", null,

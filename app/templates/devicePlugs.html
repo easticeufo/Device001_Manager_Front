@@ -12,6 +12,7 @@
                     <th class="center">状态更新时间</th>
                     <th class="center">功率(瓦)</th>
                     <th class="center">消耗电量(度)</th>
+                    <th class="center">操作</th>
                 </tr>
                 <tr ng-repeat="plug in plugs">
                     <td>{{plug.id}}</td>
@@ -24,6 +25,9 @@
                     <td>{{plug.updateTime | date: "yyyy-MM-dd HH:mm:ss"}}</td>
                     <td>{{plug.power}}</td>
                     <td>{{plug.consumePower / 1000 | number:1}}</td>
+                    <th>
+                        <button class="btn btn-info btn-xs" ng-click="setPlugStatus(plug.id)">{{plug.statusButtonName}}</button>
+                    </th>
                 </tr>
             </table>
         </div>
