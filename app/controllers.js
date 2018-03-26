@@ -603,7 +603,7 @@ appControllers.controller("ReportController", ["$scope", "ApiMine", "ApiReport",
             }
 
             window.open(url, "_self");
-        }
+        };
     }
 ]);
 
@@ -808,6 +808,29 @@ appControllers.controller("ChargeRecordsController", ["$scope", "$state", "ApiMi
             }
             $scope.currentPage = 1;
             $scope.pageChanged();
+        };
+
+        $scope.exportExcel = function ()
+        {
+            var url = testServerAddr + "api/mine/records/charge/excel"
+                +"?deviceCode="+deviceCode+"&location="+location;
+
+            if (areaIds != null && areaIds.length != 0)
+            {
+                url += ("&areaIds="+areaIds);
+            }
+
+            if (startTime != null)
+            {
+                url += ("&startTime="+startTime.getTime());
+            }
+
+            if (stopTime != null)
+            {
+                url += ("&stopTime="+stopTime.getTime());
+            }
+
+            window.open(url, "_self");
         };
     }
 ]);
